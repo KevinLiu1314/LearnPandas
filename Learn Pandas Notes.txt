@@ -1,0 +1,71 @@
+7/17/2014   Thursday
+*   can't import pyodbc
+    sys.path
+    sys.path.append("C:\\Anaconda\\Lib\\site-packages\\sqlalchemy\\connectors") may have helped
+    start a new notebook
+
+------------------
+7/11/2014   Friday
+ipython nbconvert --to html notebook.ipynb failed because a cell is of type Heading 3, only works with type Code
+
+------------------
+6/20/2014   Friday
+Script error when loading an existing notebook, update anaconda
+$ conda update conda
+$ conda update anaconda
+
+---------------------
+6/19/2014   Thursday
+ipython notebook --pylab inline
+ipython nbconvert --to html notebook.ipynb
+---------------------
+6/18/2014   Wednesday
+def f(x):
+    return pd.Series([x["b"],x["e"],x["b"]*x["e"], min(x), "foo"+str(min(x))], index=["b", "e", "Product", "Min", "Cancat"])
+frame.apply(f, axis=1)
+------
+def format(x):
+    if isinstance(x, str):
+        return x
+    else:
+        return "{0:.2f} {1:.4f}".format(x, x*2)
+
+frame.apply(f, axis=1).applymap(format)
+------
+np.where(df["two"]==1)
+np.where(df.index=="c")
+------
+frame.sort_index(axis=1, ascending=False)
+frame.sort_index(by="b")
+series.order()
+
+-------------------
+6/13/2014   Friday
+AnswerRate2 = pd.read_excel("AnswerRate.xls","Sheet1")
+df = pd.merge(YearMonth, AnswerRate, how='left')
+df["Date"]=df.apply(lambda row: pd.datetime(row["Year"], row["Month"], 1), axis=1)
+df.count()
+t = df.set_index("Date")
+t.reset_index()
+
+--------------------
+6/12/2014   Thursday
+
+!dir
+os.chdir()
+df.to_excel("YearMonth.xls", index=False)
+df.to_csv("YearMonth.csv", index=False)
+
+
+3/20/2014   Thursday
+--------------------
+*   use df["ColumnName"].apply(str) to convert integers to str
+
+    Select column                   df[col]         Series
+    Select row by label             df.loc[label]   Series
+    Select row by integer location  df.iloc[loc]    Series
+    Slice rows                      df[5:10]        DataFrame
+    Select rows by boolean vector   df[bool_vec]    DataFrame
+    use df.loc[[2, 7, 0]] for a list of labels
+    df1.iloc[[1,3,5],[1,3]          rows 1, 3, 5 and columns 1, 3
+    
